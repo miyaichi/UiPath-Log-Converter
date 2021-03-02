@@ -14,11 +14,13 @@ UiPathのExecution Logを解析しやすいようにExcelファイルに変換�
 
 UiPath StudioやRobot Trayから起動する他に、バッチファイルから起動することも可能です。
 サンプルとして、UiPath-Log-Converter.batを参照してください。
+※UiRobot.exeがインストールされるフォルダはインストール方法やバージョンによって変わります。バッチファイルを利用する前に、PATHの設定を調整してください。
+
 
 ```
 @echo off
 
-REM set PATH="C:\Program Files (x86)\UiPath\Studio";%PATH^%
+set PATH=C:\Program Files (x86)\UiPath\Studio;%PATH^%
 set PATH=C:\Users\User\AppData\Local\UiPath\app-20.10.5;%PATH%
 
 cd %~dp0
