@@ -1,6 +1,6 @@
 {
   "name": "UiPath-Log-Converter",
-  "description": "Blank Process",
+  "description": "UiPathのExecution Logを解析しやすいようにExcelファイルに変換します。",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.5]",

@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>614,687</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>958,580</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -70,19 +70,20 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="376,482" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Execution LogをExcelファイルに変換します。&#xD;&#xA;&#xD;&#xA;Parameter:&#xD;&#xA;in_LogDate: String: 取得するログの日付（YYYY-MM-DD形式）&#xD;&#xA;in_ExcelFile: String: 変換後のExcelファイルのパス&#xD;&#xA;in_OptionalColumns: String[]: TimeStamp, Level, Message以外に取得する項目名のリスト。" sap:VirtualizedContainerService.HintSize="242,415" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="DataTable" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Argument check" sap:VirtualizedContainerService.HintSize="334,176" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Argument check" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -123,26 +124,20 @@
         </If.Then>
       </If>
     </Sequence>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ParseLog workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ParseLog.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ParseLog workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ParseLog.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Environment.ExpandEnvironmentVariables(&quot;%LocalAppData%/UiPath/Logs/&quot;) + in_LogDate + &quot;_Execution.log&quot;" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="DataTable" />
-        </OutArgument>
-        <InArgument x:TypeArguments="s:String[]" x:Key="in_OptionalColumns">
-          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="in_OptionalColumns" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogFile">[Environment.ExpandEnvironmentVariables("%LocalAppData%/UiPath/Logs/") + in_LogDate + "_Execution.log"]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">[DataTable]</OutArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_OptionalColumns">[in_OptionalColumns]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:WriteRange AddHeaders="True" DataTable="[DataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Execution Log" StartingCell="A1" WorkbookPath="[in_ExcelFile]">
+    <ui:WriteRange AddHeaders="True" DataTable="[DataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Execution Log" StartingCell="A1" WorkbookPath="[in_ExcelFile]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
